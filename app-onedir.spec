@@ -37,7 +37,8 @@ exe = EXE(pyz,
           bootloader_ignore_signals=False,
           strip=False,
           upx=False,
-          console=False , icon=_icon)
+          console=False )
+          #, icon=_icon)
 
 coll = COLLECT(exe,
                a.binaries,

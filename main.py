@@ -1,6 +1,8 @@
 import sys
+
 import requests
 import json
+from jsonpath_ng import parse
 
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSlot
@@ -10,11 +12,16 @@ import elements
 
 #curl -X GET "https://www.data.gouv.fr/api/1/datasets/?format=xml&reuses=many&page=0&page_size=20" -H "accept: application/json"
 URL = "https://www.data.gouv.fr/api/1/datasets/?format=xml&reuses=many&page=0&page_size=20"
+PATH = "data.[*].title"
 
 class Ui(QtWidgets.QMainWindow, app.Ui_MainWindow):
     def __init__(self, parent=None):
         super(Ui, self).__init__(parent)
         self.setupUi(self)
+        self.url = URL
+        self.path = PATH
+        self.urlEdit.setText(self.url)
+        self.jsonpathEdit.setText(self.path)
         self.model=elements.TitleModel()
         self.listView.setModel(self.model)
 
@@ -25,19 +32,22 @@ class Ui(QtWidgets.QMainWindow, app.Ui_MainWindow):
     def on_pushButton_clicked(self):
         self.get_infos()
 
+    @pyqtSlot(str)
+    def on_urlEdit_textChanged(self, s):
+        self.url = str(self.urlEdit.text())
+
+    @pyqtSlot(str)
+    def on_jsonpathEdit_textChanged(self, s):
+        self.path = str(self.jsonpathEdit.text())
+
     def get_infos(self):
-        req = requests.get(URL)
+        req = requests.get(self.url)
         titles = set()
         if req.status_code == 200:
             data = json.loads(req.text)
-            for item in data["data"]:
-                for res in item["resources"]:
-                    titles.add(item["title"])
-
+            [titles.add(match.value) for match in parse(self.path).find(data)]
         self.model.titles=list(titles)
         self.model.layoutChanged.emit()
-
-
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

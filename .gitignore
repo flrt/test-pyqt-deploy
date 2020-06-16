@@ -6,3 +6,12 @@ build/
 bin/
 include/
 lib/
+
+Scripts/*
+Lib/*
+Include/*
+dist/*
+build/*
+__pycache__/*
+main.build/*
+main.dist/*

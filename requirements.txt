@@ -1,3 +1,7 @@
 PyQt5
 requests
+jsonpath-ng
 pyinstaller
+cx_Freeze
+nuitka
+
