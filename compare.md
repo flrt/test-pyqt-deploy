@@ -1,6 +1,7 @@
 ## MacOS
 
 Taille onefile = 50,9 Mb
+1er demarrage - 20 sec
 Temps de démarrage - 12 sec
 
 Taille onedir =
@@ -26,6 +27,12 @@ temps de démarrage : 5 à 7 sec
 
 
 # cx_Freeze
+## Macos
+1 répertoire : 
+temps de démarrage :
+    - 1ere demarrage : entre 12 et 20 sec
+    - démarrages suivants : 1 sec
+    
 ## windows
 1 répertoire : 166 mb
 temps de démarrage : 1 sec

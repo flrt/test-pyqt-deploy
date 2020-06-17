@@ -35,14 +35,8 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="jsonpathEdit">
-       <property name="font">
-        <font>
-         <family>DejaVu Sans Mono</family>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-      </widget>
+      <widget class="QLineEdit" name="jsonpathEdit"/>
+       
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label">
@@ -75,14 +69,9 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="urlEdit">
-       <property name="font">
-        <font>
-         <family>DejaVu Sans Mono</family>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-      </widget>
+      <widget class="QLineEdit" name="urlEdit"/>
+       
+      
      </item>
     </layout>
    </widget>

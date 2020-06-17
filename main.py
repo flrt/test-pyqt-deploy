@@ -1,10 +1,11 @@
 import sys
+import platform
 
 import requests
 import json
 from jsonpath_ng import parse
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import pyqtSlot
 
 import app
@@ -13,6 +14,17 @@ import elements
 #curl -X GET "https://www.data.gouv.fr/api/1/datasets/?format=xml&reuses=many&page=0&page_size=20" -H "accept: application/json"
 URL = "https://www.data.gouv.fr/api/1/datasets/?format=xml&reuses=many&page=0&page_size=20"
 PATH = "data.[*].title"
+
+STYLES = {"Windows": """
+QWidget   { font-family:'Segoe UI';font-size:9pt; }
+QLineEdit { font-family:"DejaVu Sans Mono";font-size:9pt; }""",
+          "Darwin": """
+QWidget   { font-family:'Lucida Grande';font-size:12pt; }
+QLineEdit { font-family:"Menlo";font-size:12pt; }""",
+          "Linux": """
+QWidget   { font-family:'Lucida Grande';font-size:9pt; }
+QLineEdit { font-family:"Menlo";font-size:9pt; }"""}
+
 
 class Ui(QtWidgets.QMainWindow, app.Ui_MainWindow):
     def __init__(self, parent=None):
@@ -24,6 +36,9 @@ class Ui(QtWidgets.QMainWindow, app.Ui_MainWindow):
         self.jsonpathEdit.setText(self.path)
         self.model=elements.TitleModel()
         self.listView.setModel(self.model)
+        if platform.system() in STYLES:
+            self.setStyleSheet(STYLES[platform.system()])
+
 
     def main(self):
         self.show()
