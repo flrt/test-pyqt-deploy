@@ -1,6 +1,7 @@
 venv/*
 *.json
 .idea
+.idea
 dist/
 build/
 bin/
