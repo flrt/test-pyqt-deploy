@@ -5,11 +5,10 @@ import requests
 import json
 from jsonpath_ng import parse
 
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSlot
 
-import app
-import elements
+from banana import elements, app
 
 #curl -X GET "https://www.data.gouv.fr/api/1/datasets/?format=xml&reuses=many&page=0&page_size=20" -H "accept: application/json"
 URL = "https://www.data.gouv.fr/api/1/datasets/?format=xml&reuses=many&page=0&page_size=20"
@@ -34,7 +33,7 @@ class Ui(QtWidgets.QMainWindow, app.Ui_MainWindow):
         self.path = PATH
         self.urlEdit.setText(self.url)
         self.jsonpathEdit.setText(self.path)
-        self.model=elements.TitleModel()
+        self.model= elements.TitleModel()
         self.listView.setModel(self.model)
         if platform.system() in STYLES:
             self.setStyleSheet(STYLES[platform.system()])

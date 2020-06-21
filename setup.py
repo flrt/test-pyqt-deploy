@@ -27,5 +27,18 @@ executables = [
 setup(name=APPNAME,
       version=__version__,
       description=APPDESCR,
+      packages=[APPNAME],
       options={"build_exe": buildOptions},
-      executables=executables)
+      executables=executables,
+      entry_points={
+          'console_scripts': ['banana = banana.banana:main']
+      },
+      data_files=[
+          ('share/applications/', ['banana.desktop'])
+      ],
+      classifiers=[
+          "License :: OSI Approved :: BSD License",
+      ],
+      )
+
+# https://stackoverflow.com/questions/17401381/debianzing-a-python-program-to-get-a-deb
