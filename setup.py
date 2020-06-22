@@ -3,7 +3,7 @@ from cx_Freeze import setup, Executable
 
 APPNAME = 'banana'
 APPDESCR = 'banana test'
-MAIN = 'main.py'
+MAIN = 'banana/main.py'
 __version__ = '1.0'
 
 buildOptions = dict(packages=["multiprocessing"], excludes=["tkinter"])
@@ -24,21 +24,30 @@ executables = [
     Executable(MAIN, base=base, targetName=APPNAME, icon='assets/banana.ico')
 ]
 
-setup(name=APPNAME,
-      version=__version__,
-      description=APPDESCR,
-      packages=[APPNAME],
-      options={"build_exe": buildOptions},
-      executables=executables,
-      entry_points={
-          'console_scripts': ['banana = banana.banana:main']
-      },
-      data_files=[
-          ('share/applications/', ['banana.desktop'])
-      ],
-      classifiers=[
-          "License :: OSI Approved :: BSD License",
-      ],
-      )
+if sys.platform == "win32":
+    setup(name=APPNAME,
+          version=__version__,
+          description=APPDESCR,
+          packages=[APPNAME],
+          options={"build_exe": buildOptions},
+          executables=executables,
+          )
+elif sys.platform == "linux":
+    setup(name=APPNAME,
+          version=__version__,
+          description=APPDESCR,
+          packages=[APPNAME],
+          options={"build_exe": buildOptions},
+          executables=executables,
+          entry_points={
+              'console_scripts': ['banana = banana.banana:main']
+          },
+          data_files=[
+              ('share/applications/', ['banana.desktop'])
+          ],
+          classifiers=[
+              "License :: OSI Approved :: BSD License",
+          ],
+          )
 
 # https://stackoverflow.com/questions/17401381/debianzing-a-python-program-to-get-a-deb
