@@ -6,6 +6,10 @@ APPDESCR = 'banana test'
 MAIN = 'banana/main.py'
 __version__ = '1.0'
 
+winOptions = {"upgrade-code": "44aad47f-38bd-4fcf-b70c-b0b4cf3f246b",
+              "initial_target_dir": r'[ProgramFilesFolder]\%s' % APPNAME,
+              "install_icon": "assets/banana.ico",
+              "target_name": "banana"}
 buildOptions = dict(packages=["multiprocessing"], excludes=["tkinter"])
 
 # On Mac OS
@@ -29,7 +33,7 @@ if sys.platform == "win32":
           version=__version__,
           description=APPDESCR,
           packages=[APPNAME],
-          options={"build_exe": buildOptions},
+          options={"build_exe": buildOptions, "sdist_msi": winOptions},
           executables=executables,
           )
 elif sys.platform == "linux":
