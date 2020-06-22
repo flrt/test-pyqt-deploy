@@ -21,3 +21,8 @@ sudo cp assets/banana.ico /usr/share/pixmaps/banana.ico
 # Deploiement sur windows
 ./Scripts\Activate.ps1
 python setup.py bdist_msi
+
+# Deploiement sur linux
+Creation d'un tar.gz : build/xxx.tar.gz
+
+sh linux_install.sh

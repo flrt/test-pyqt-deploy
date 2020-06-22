@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Banana
+GenericName=Data Explorer
+X-GNOME-FullName=Banana Data Explorer
+Comment=Explore data with json path
+Keywords=json,api
+Exec=/usr/share/banana/banana
+Icon=/usr/share/pixmaps/banana.ico
+Terminal=False
+Type=Application
+Version=1.0
+
