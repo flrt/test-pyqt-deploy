@@ -1,6 +1,6 @@
-venv/*
+venv/
 *.json
-.idea
+pyvenv.cfg
 .idea
 dist/
 build/
@@ -8,11 +8,11 @@ bin/
 include/
 lib/
 
-Scripts/*
-Lib/*
-Include/*
-dist/*
-build/*
-__pycache__/*
-main.build/*
-main.dist/*
+Scripts/
+Lib/
+Include/
+dist/
+build/
+__pycache__/
+main.build/
+main.dist/

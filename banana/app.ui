@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/img/banana.ico</normaloff>:/img/banana.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
@@ -36,7 +40,6 @@
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="jsonpathEdit"/>
-       
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label">
@@ -70,8 +73,6 @@
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="urlEdit"/>
-       
-      
      </item>
     </layout>
    </widget>
@@ -88,6 +89,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
